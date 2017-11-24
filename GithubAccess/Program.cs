@@ -31,6 +31,15 @@ namespace GithubAccess
                 user.PublicRepos,
                 user.Url);
             Console.WriteLine(user.CreatedAt);
+
+            var repos = await client.Repository.GetAllForCurrent();
+            var count = repos.Count;
+            Console.WriteLine($"Here are {user}'s repositories: ");
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine(repos.ElementAt(i).Name);
+            }
+
             Console.ReadLine();
             //Test comment
         }
