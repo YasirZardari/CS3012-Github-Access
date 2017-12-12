@@ -47,6 +47,16 @@ namespace GithubAccess
                    */
             var repos = await client.Repository.GetAllForUser(GithubUser);
             var count = repos.Count;
+
+            var JavaCount = 0;
+            var C_Count = 0;
+            var PythonCount = 0;
+            var JavascriptCount = 0;
+            var PHPCount = 0;
+            var CSharpCount = 0;
+            var RubyCount = 0;
+            var ObjC_Count = 0;
+            var CplusCount = 0; 
             //var lang = repos.ElementAt(0).Language;
             for (int i = 0; i < count; i++)
             {
