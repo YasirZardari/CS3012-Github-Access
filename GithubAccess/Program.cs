@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Octokit;
+using System.IO;
 
 namespace GithubAccess
 {
@@ -26,6 +27,11 @@ namespace GithubAccess
             String GithubUser = Console.ReadLine();
             var basicAuth = new Credentials(username, password); // NOTE: not real credentials
             client.Credentials = basicAuth;
+
+            string filePath = "..\\..\\..\\data.csv"; 
+            File.Create(filePath);      
+            string text = "language,count\n";
+            File.AppendAllText(filePath, text);
 
             var user = await client.User.Get("YasirZardari");
             /*           Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
@@ -120,6 +126,27 @@ namespace GithubAccess
             Console.WriteLine("C - " + C_Count);
             Console.WriteLine("Other - " + OtherCount);
 
+            text = "Java," + JavaCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "Python," + PythonCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "C#," + CSharpCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "C++," + CplusCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "Objective-C," + ObjC_Count + "\n";
+            File.AppendAllText(filePath, text);
+            text = "JavaScript," + JavascriptCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "Ruby," + RubyCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "PHP," + PHPCount + "\n";
+            File.AppendAllText(filePath, text);
+            text = "C," + C_Count + "\n";
+            File.AppendAllText(filePath, text);
+            text = "Other," + OtherCount + "\n";
+            File.AppendAllText(filePath, text);
+            
 
             Console.ReadLine();
         }
