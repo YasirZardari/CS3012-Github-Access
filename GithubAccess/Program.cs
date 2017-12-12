@@ -22,6 +22,8 @@ namespace GithubAccess
             string username = Console.ReadLine();
             Console.Write("Please enter password: ");
             string password = Console.ReadLine();
+            Console.Write("Please enter user you want to retrieve data for: ");
+            String GithubUser = Console.ReadLine();
             var basicAuth = new Credentials(username, password); // NOTE: not real credentials
             client.Credentials = basicAuth;
 
@@ -43,7 +45,7 @@ namespace GithubAccess
                        Console.ReadLine();
                        //Test comment
                    */
-            var repos = await client.Repository.GetAllForUser("facebook");
+            var repos = await client.Repository.GetAllForUser(GithubUser);
             var count = repos.Count;
             //var lang = repos.ElementAt(0).Language;
             for (int i = 0; i < count; i++)
