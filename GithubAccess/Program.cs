@@ -22,8 +22,8 @@ namespace GithubAccess
             string username = Console.ReadLine();
             Console.Write("Please enter password: ");
             string password = Console.ReadLine();
-            Console.Write("Please enter user you want to retrieve data for: ");
-            String GithubUser = Console.ReadLine();
+          //  Console.Write("Please enter user you want to retrieve data for: ");
+            //String GithubUser = Console.ReadLine();
             var basicAuth = new Credentials(username, password); // NOTE: not real credentials
             client.Credentials = basicAuth;
 
@@ -45,23 +45,36 @@ namespace GithubAccess
                        Console.ReadLine();
                        //Test comment
                    */
-            var repos = await client.Repository.GetAllForUser(GithubUser);
+            var repos = await client.Repository.GetAllForCurrent();
             var count = repos.Count;
 
             var JavaCount = 0;
             var C_Count = 0;
             var PythonCount = 0;
             var JavascriptCount = 0;
-            var PHPCount = 0;
+            var HtmlCount = 0;
             var CSharpCount = 0;
             var RubyCount = 0;
             var ObjC_Count = 0;
-            var CplusCount = 0; 
+            var CplusCount = 0;
             //var lang = repos.ElementAt(0).Language;
+            Console.WriteLine("number of repos: " + count);
             for (int i = 0; i < count; i++)
             {
-                Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
+            //Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
+             //var repoName = repos.ElementAt(i).Name;
+             var repoLanguage = repos.ElementAt(i).Language;
+             Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
+             if (String.Compare("Java",repoLanguage) == 0)
+             {
+                    JavaCount++;
+             }
+             
+           
             }
+            Console.WriteLine(JavaCount);
+
+           
             Console.ReadLine();
         }
     }
