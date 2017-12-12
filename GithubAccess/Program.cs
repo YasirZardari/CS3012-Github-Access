@@ -65,7 +65,7 @@ namespace GithubAccess
             //Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
              //var repoName = repos.ElementAt(i).Name;
              var repoLanguage = repos.ElementAt(i).Language;
-             Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
+             //Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
              if (String.Compare("Java",repoLanguage) == 0)
              {
                     JavaCount++;
