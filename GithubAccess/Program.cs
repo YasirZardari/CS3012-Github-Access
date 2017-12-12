@@ -26,22 +26,31 @@ namespace GithubAccess
             client.Credentials = basicAuth;
 
             var user = await client.User.Get("YasirZardari");
-            Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
-                user.Name,
-                user.PublicRepos,
-                user.Url);
-            Console.WriteLine(user.CreatedAt);
+            /*           Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
+                           user.Name,
+                           user.PublicRepos,
+                           user.Url);
+                       Console.WriteLine(user.CreatedAt);
 
-            var repos = await client.Repository.GetAllForCurrent();
+                       var repos = await client.Repository.GetAllForCurrent();
+                       var count = repos.Count;
+                       Console.WriteLine($"Here are {user}'s repositories: ");
+                       for (int i = 0; i < count; i++)
+                       {
+                           Console.WriteLine(repos.ElementAt(i).Name);
+                       }
+
+                       Console.ReadLine();
+                       //Test comment
+                   */
+            var repos = await client.Repository.GetAllForUser("facebook");
             var count = repos.Count;
-            Console.WriteLine($"Here are {user}'s repositories: ");
+            //var lang = repos.ElementAt(0).Language;
             for (int i = 0; i < count; i++)
             {
-                Console.WriteLine(repos.ElementAt(i).Name);
+                Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
             }
-
             Console.ReadLine();
-            //Test comment
         }
     }
 }
