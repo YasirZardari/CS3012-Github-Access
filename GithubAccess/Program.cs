@@ -27,13 +27,15 @@ namespace GithubAccess
             String GithubUser = Console.ReadLine();
             var basicAuth = new Credentials(username, password); // NOTE: not real credentials
             client.Credentials = basicAuth;
-
+            //Console.WriteLine("Before create File");
             string filePath = "..\\..\\..\\data.csv"; 
-            File.Create(filePath);      
-            string text = "language,count\n";
-            File.AppendAllText(filePath, text);
+            File.Create(filePath);
+            //Console.WriteLine("After Create File");
+            
+            
+            //Console.WriteLine("After Appending first line");
 
-            var user = await client.User.Get("YasirZardari");
+            //var user = await client.User.Get("YasirZardari");
             /*           Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
                            user.Name,
                            user.PublicRepos,
@@ -126,6 +128,9 @@ namespace GithubAccess
             Console.WriteLine("C - " + C_Count);
             Console.WriteLine("Other - " + OtherCount);
 
+
+            string text = "language,count\n";
+            File.AppendAllText(filePath, text);
             text = "Java," + JavaCount + "\n";
             File.AppendAllText(filePath, text);
             text = "Python," + PythonCount + "\n";
@@ -146,8 +151,8 @@ namespace GithubAccess
             File.AppendAllText(filePath, text);
             text = "Other," + OtherCount + "\n";
             File.AppendAllText(filePath, text);
-            
 
+            //File.Create(filePath).Close();
             Console.ReadLine();
         }
     }
