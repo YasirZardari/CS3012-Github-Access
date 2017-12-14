@@ -25,18 +25,14 @@ namespace GithubAccess
             string password = Console.ReadLine();
             Console.Write("Please enter user you want to retrieve data for: ");
             String GithubUser = Console.ReadLine();
-            var basicAuth = new Credentials(username, password); // NOTE: not real credentials
+            var basicAuth = new Credentials(username, password); 
             client.Credentials = basicAuth;
-            //Console.WriteLine("Before create File");
             string filePath = "..\\..\\..\\data.csv"; 
             File.Create(filePath);
-            //Console.WriteLine("After Create File");
-            
-            
-            //Console.WriteLine("After Appending first line");
 
-            //var user = await client.User.Get("YasirZardari");
-            /*           Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
+            //The below code displays info regarding a developer of your choosing
+            /*var user = await client.User.Get("YasirZardari");
+                       Console.WriteLine("{0} has {1} public repositories - go check out their profile at {2}",
                            user.Name,
                            user.PublicRepos,
                            user.Url);
@@ -51,8 +47,9 @@ namespace GithubAccess
                        }
 
                        Console.ReadLine();
-                       //Test comment
-                   */
+                       
+            */
+
             var repos = await client.Repository.GetAllForUser(GithubUser);
             var count = repos.Count;
 
@@ -66,14 +63,11 @@ namespace GithubAccess
             var ObjC_Count = 0;
             var CplusCount = 0;
             var OtherCount = 0;
-            //var lang = repos.ElementAt(0).Language;
+
             Console.WriteLine("number of repos: " + count);
             for (int i = 0; i < count; i++)
             {
-            //Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
-             //var repoName = repos.ElementAt(i).Name;
              var repoLanguage = repos.ElementAt(i).Language;
-             //Console.WriteLine(repos.ElementAt(i).Name + " - " + repos.ElementAt(i).Language);
              if (String.Compare("Java",repoLanguage) == 0)
              {
                     JavaCount++;
